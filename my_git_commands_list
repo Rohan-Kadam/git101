@@ -99,6 +99,14 @@ git status
 git push origin master
 git log
 
+21. basic steps to begin with
+git pull origin master 				#update to latest
+vim my_git_commands_list 			#Do changes
+git add my_git_commands_list 			#Ready,....
+git commit -m "after github readme update" 	#Set,....
+git remote -v					#Check
+git push origin master				#GO
+
 
 
 So basically 9 things to remember,
