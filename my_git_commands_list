@@ -84,7 +84,19 @@ Master is the name of the default branch that git creates for you when first cre
 19. All updates, back-track, history
 git log
 
-
+20. Starting new repo
+Create new repo in github
+git init in local folder
+git remote -v
+git remote rm origin
+git remote add origin https://github.com/Rohan-Kadam/<new-repo>
+git remote -v
+git status
+git add .
+git commit -m "First commit"
+git status
+git push origin master
+git log
 
 
 
