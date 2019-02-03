@@ -1,0 +1,209 @@
+My list of git commands for quick look before I get used to them
+
+1. Start your own Repository
+>> git init
+
+2.Download existing Repository
+>> git clone https://github.com/cooperka/emoji-commit-messages.git
+
+3. Enter downloaded Repo and check status
+>> cd emoji-commit-messages
+>> git status
+
+4. Create new Local Checkpoint/Reference/File>SaveAs
+>> git checkout -b my-new-feature
+
+5. Make changes in Repo
+>> echo “This is a cool new file” > my-file.txt
+>> git status
+
+6. Resume from existing Checkpoint
+>> git checkout master 
+or 
+>> git checkout <existing-branch name>
+
+7. Difference between Checkpoint
+>> git diff <branch-name> <other-branch-name>
+
+8. View changes before committing anything
+>> git diff
+
+9. Penultimate stage (i.e. Stage before committing)
+This one is confusing. Why is it required?
+Assume a scenario where code updated in new branch, tested and working. So its ready to commit. But end moment some changes. But (2nd but) now code is not working and its late night. So you decide to commit earlier added work. In this scenario its HELPFUL.
+TEST--> new branch,changes,git add, changes2, git commit,updated repo shouldn't have changes2[CHECK]
+git add <files>
+or
+git add --all
+
+10. Status check after git add and changes2 will show new changes2 as "--newchanges2-in-red"
+git status
+
+11 Submit locally and also enter a message explaining new updates to codebase
+git commit
+or
+git commit -m "Message"
+
+12. Upload to github URL/remote Repo (called origin)
+Head is for git what current is for linux kernel. It gives latest checkpoint.
+git push origin <branch-name>
+or 
+git push origin HEAD
+
+13. Download branch
+Diff between pull and clone
+git pull <branch-name>
+
+14. Update local repo with detail about other branches at origin
+git fetch
+
+15. Merge
+git merge <other-branch-name>
+or
+
+16. Safe Merge
+git checkout master      # Make sure you're on the right branch.
+git fetch                # Download any new info from origin.
+git merge origin/master  # Merge the 'origin/master' branch
+                           into your current branch.
+
+17. Fetch+Merge (More common than 16)
+git pull origin master	 # Update master with origin details	
+
+18. origin master and origin/master
+origin/master :- remote repo''s master
+master	:- my local repo master
+origin :- github URL/remote Repo	
+
+Origin – 
+When you clone a repository for the first time origin is a default name given to the original remote repository that you clone, from where you want to push and pull changes. So basically ‘origin’ is alias of your so big remote repository name. By saying git push origin <branch_name> , you are saying to push to the original repository.
+
+Master - 
+Master is the name of the default branch that git creates for you when first creating a repository . In most cases, "master" means "the main branch”. It's the branch that represents production code, and that all other branches come from and generally eventually rejoin.
+
+19. All updates, back-track, history
+git log
+
+
+
+
+
+So basically 9 things to remember,
+1.Workflow: 
+==============================================================================================
+Your local repository consists of three "trees" maintained by git. the first one is your Working Directory which holds the actual files. the second one is the Index which acts as a staging area and finally the HEAD which points to the last commit you've made
+
+
+2.Add-n-Commit: add,commit
+==============================================================================================
+You can propose changes (add it to the Index) using "git add <filename>" or "git add *"
+This is the first step in the basic git workflow. To actually commit these changes use "git commit -m "Commit message""
+Now the file is committed to the HEAD, but not in your remote repository yet. 
+
+
+3.Pushing changes: push,remote add
+==============================================================================================
+Your changes are now in the HEAD of your local working copy. To send those changes to your remote repository, execute "git push origin master"
+Change master to whatever branch you want to push your changes to.
+If you have not cloned an existing repository and want to connect your repository to a remote server, you need to add it with
+"git remote add origin <server>"
+Now you are able to push your changes to the selected remote server
+
+
+4.Branching: branch -b, branch -d, checkout, push
+==============================================================================================
+Branches are used to develop features isolated from each other. The master branch is the "default" branch when you create a repository. Use other branches for development and merge them back to the master branch upon completion.
+Create a new branch named "feature_x" and switch to it using "git checkout -b feature_x" switch back to master "git checkout master"
+and delete the branch again "git branch -d feature_x" 
+A branch is not available to others unless you push the branch to your remote repository "git push origin <branch>"
+
+
+5.Update-n-Merge: pull(fetch+merge),merge,CONFLICT>> edit manually and add+diff
+==============================================================================================
+To update your local repository to the newest commit, execute "git pull" in your working directory to fetch and merge remote changes.
+To merge another branch into your active branch (e.g. master), use "git merge <branch>"
+In both cases git tries to auto-merge changes. 
+Unfortunately, this is not always possible and results in conflicts. 
+You are responsible to merge those conflicts manually by editing the files shown by git. After changing, you need to mark them as merged with "git add <filename>"
+Before merging changes, you can also preview them by using "git diff <source_branch> <target_branch>"
+
+
+6.Tagging: tag
+==============================================================================================
+It's recommended to create tags for software releases. this is a known concept, which also exists in SVN. 
+You can create a new tag named 1.0.0 by executing "git tag 1.0.0 1b2e1d63ff"
+The 1b2e1d63ff stands for the first 10 characters of the commit id you want to reference with your tag. 
+You can get the commit id by looking at the...Log 
+
+
+7.Log: log
+==============================================================================================
+In its simplest form, you can study repository history using.. "git log"
+You can add a lot of parameters to make the log look like what you want. 
+To see only the commits of a certain author: "git log --author=bob"
+To see a very compressed log where each commit is one line: "git log --pretty=oneline"
+Or maybe you want to see an ASCII art tree of all the branches, decorated with the names of tags and branches:"git log --graph --oneline --decorate --all"
+See only which files have changed: "git log --name-status"
+These are just a few of the possible parameters you can use. For more, see "git log --help"
+
+
+8.Replace local changes: WRONG>> Replace using checkout -- or Drop using fetch+reset
+==============================================================================================
+In case you did something wrong, which for sure never happens ;), 
+You can replace local changes using the command "git checkout -- <filename>"
+This replaces the changes in your working tree with the last content in HEAD.Changes already added to the index, as well as new files, will be kept.
+
+If you instead want to drop all your local changes and commits, fetch the latest history from the server and point your local master branch at it like this "git fetch origin" "git reset --hard origin/master"
+
+
+9.Misc:
+==============================================================================================
+built-in git GUI "gitk"
+use colorful git output "git config color.ui true"
+show log on just one line per commit "git config format.pretty oneline"
+use interactive adding "git add -i"
+
+
+
+
+
+
+
+Std way of working
+A] Descriptive:-
+
+Suppose, you initiated your git repository with $ git init in JavaRepo dir and checkouted there the project with $ git pull or $ git clone. 
+Then JavaRepo should contain .git file (among others git dotted files) - you can check it with $ ls -a. 
+These files itself are the local git repository, and there is no need to distinguish 'working directory' and 'local repository' directory.
+
+So, start working with files in JavaRepo: say you changed file example.java and created new file example2.java. 
+Execute $ git status in JavaRepo (or in any its subdirs). It should show: 'modified: example.java', 'Untracked files: example2.java'.
+
+Add your files to the staging area with $ git add example.java and $ git add example2.java commands from the directory with these files. 
+(Notice that $ git add is both for changed and new files.)
+
+And finally commit your files by $ git commit -m "example changes" (-m stays for message - comments to the commit).
+$ git log should show this commit.
+
+Now we need to merge with main branch
+Merge VS Commit
+Merge: Merge two branches or merge new-feature-branch with master(i.e. local master)
+Commint: commit finalises new changes in branches, adds to local repo and also provides message in log
+
+Merge+Commit together Dangerous/Risky ???
+Always commit in working branch and then merge with main branch
+
+Best practice to merge??
+git checkout master
+git pull origin master
+git merge test
+git push origin master
+
+
+
+B] Commands::-
+
+
+
+
+
