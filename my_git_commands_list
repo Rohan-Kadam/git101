@@ -107,7 +107,7 @@ git commit -m "after github readme update" 	#Set,....
 git remote -v					#Check
 git push origin master				#GO
 
-
+pull-changefile-add-commit-goto2<or>pull-push
 
 So basically 9 things to remember,
 1.Workflow: 
