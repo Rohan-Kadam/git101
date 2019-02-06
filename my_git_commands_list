@@ -107,6 +107,11 @@ git commit -m "after github readme update" 	#Set,....
 git remote -v					#Check
 git push origin master				#GO
 
+On merge error:
+Go to conflict file and select section to retain (>>>>>>>>> section 1  ========== section 2 <<<<<<<<<<)
+OR
+Use meld
+
 pull-changefile-add-commit-goto2<or>pull-push
 
 
