@@ -109,6 +109,37 @@ git push origin master				#GO
 
 pull-changefile-add-commit-goto2<or>pull-push
 
+
+22. basic steps to deal with branches
+git checkout -b <NewBranch> / git branch -b <NewBranch>
+DO WORK eg.echo “This is a cool new file” > test.txt
+ls test.*
+git add test.txt
+git commit -m "Msg"
+git checkout master
+git pull origin master
+git diff master <NewBranch>
+git merge master <NewBranch> (Will do Fast forward merge if master hasn't changed since NewBranch made)
+git push origin master
+
+Show all branches = git branch
+Delete branch = git branch -d <NewBranch>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 So basically 9 things to remember,
 1.Workflow: 
 ==============================================================================================
