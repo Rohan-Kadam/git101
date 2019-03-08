@@ -100,17 +100,20 @@ git push origin master
 git log
 
 21. basic steps to begin with
-git pull origin master 				#update to latest
-vim my_git_commands_list 			#Do changes
-git add my_git_commands_list 			#Ready,....
-git commit -m "after github readme update" 	#Set,....
-git remote -v					#Check
-git push origin master				#GO
+git pull origin master 							#Update to latest
+vim my_git_commands_list 						#Do changes
+git add my_git_commands_list 					#Ready,....
+git commit -m "after github readme update" 		#Set,....
+git remote -v									#Check
+git push origin master							#GO
 
 On merge error:
 Go to conflict file and select section to retain (>>>>>>>>> section 1  ========== section 2 <<<<<<<<<<)
+				[^^^^ BEST ^^^^]
 OR
 Use meld
+OR
+Use vim -d <file1> <file2>
 
 pull-changefile-add-commit-goto2<or>pull-push
 
@@ -131,6 +134,10 @@ Show all branches = git branch
 Delete branch = git branch -d <NewBranch>
 
 
+
+23. Commit message
+git diff --unified=0 HEAD~1 HEAD
+Copy changed lines
 
 
 
