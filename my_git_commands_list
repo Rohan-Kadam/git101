@@ -135,18 +135,25 @@ Delete branch = git branch -d <NewBranch>
 
 
 23. Commit message
+
 Title:
+
 Commit Summary:
+
 File Changes:
-	Mention files Added(A)/Modified(M)/Removed(R)
-	Copy changed lines in each file
-	git diff --unified=0 HEAD~1 HEAD
-	git diff --stat HEAD~1 HEAD
+
+    Mention files Added(A)/Modified(M)/Removed(R)
+
+        Copy changed lines in each file
+                git diff --stat HEAD~0
+                git diff --unified=0 HEAD~0
+
 Patch Links:
+
 
 For setting new template follow following commands:
 vim .gitmessage 
-<Enter template>
+<Enter template as written above>
 git config --global commit.template <path-to-file>/.gitmessage
 
 
