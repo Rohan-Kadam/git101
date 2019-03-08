@@ -1,0 +1,13 @@
+Title:
+
+Commit Summary:
+
+File Changes:
+
+    Mention files Added(A)/Modified(M)/Removed(R)
+	
+	Copy changed lines in each file
+		git diff --stat HEAD~0
+		git diff --unified=0 HEAD~0
+
+Patch Links:
