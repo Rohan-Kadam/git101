@@ -204,7 +204,19 @@ Basic steps (Refer point 21)
 >> New Branch in local repo, update it to remote repo, commit , fetch upstream master, patch-format and pull-request
 Refer Contribution png
 
->> patch or cherry-pick
+>> Fetch original repo
+git remote add upstream https://github.com/Rohan-Kadam/git101.git
+git fetch upstream
+git checkout master
+git rebase upstream/master or git merge upstream/master
+Rebase: Rewrite your master branch so that any commits of yours that aren't already in upstream/master are replayed on top of that other branch
+Merge: If you don't want to rewrite the history of your master branch, (for example because other people may have cloned it) then you should use merge
+Rebase is clearner
+
+Add new-feature-branch to master
+git push origin new-feature-branch
+
+>> Create patch or cherry-pick
 
 git format-patch <target-branch> -o <where-to-store>			# patch with all commits from new feature branch
 git format-patch <target-branch> -1 <SHA> -o <where-to-store>  	# patch with single commit from new feature branch
@@ -214,6 +226,8 @@ Similar to patch but not patch.
 git cherry-pick ec485b624e85b2cad930cf8b7c383a134748b057
 This is used when committed to wrong branch and need to only move that commit to right branch. 
 Get SHA of that commit in wrong branch using git log. Checkout to right branch and execute above command.
+
+>> Push patch to forked repository (called origin)
 
 >> pull request to original repository (called upstream)
 WebGUI
@@ -233,6 +247,11 @@ WebGUI
 or 
 git am <patches-directory>/<patch>  		# Similar to git add + git commit
 merge-conflict-solve-merge
+
+>> git log shows commit message of 
+1) commit that was converted to patch 2) patch upload to origin
+
+git log should have only first commit message ?????????????????????
 
 
 So basically 9 things to remember,
