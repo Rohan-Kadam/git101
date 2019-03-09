@@ -188,7 +188,7 @@ Cloning involves making a copy of the git repository to a local machine, while f
 
 Tested: Using plmqazwsx account with pw:nahoor@1995
 		Note 1 = Need to subscribe to get email
-		Note 2 = Check why contribution from plmqazwsx were tagged as Rohan-Kadam (maybe since using same PC?)
+		Note 2 = Check why contribution from plmqazwsx were tagged as Rohan-Kadam (fix: git config user.name <new-author-name>)
 		Note 3 = Get template from cse team?
 		Note 4 = How to generate links to patches? 
 
