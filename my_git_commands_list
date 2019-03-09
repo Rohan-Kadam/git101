@@ -118,7 +118,8 @@ Use vim -d <file1> <file2>
 pull-changefile-add-commit-goto2<or>pull-push
 
 
-22. basic steps to deal with branches
+22. Basic steps to deal with branches
+Create branch = 
 git checkout -b <NewBranch> / git branch -b <NewBranch>
 DO WORK eg.echo “This is a cool new file” > test.txt
 ls test.*
@@ -132,10 +133,20 @@ git push origin master
 
 Show all branches = git branch
 Delete branch = git branch -d <NewBranch>
+Rename branch = 
+git branch -m new_name						# Rename branch from same branch
+git branch -m old_name new_name         	# Rename branch from different branch    
+git push origin :old_branch                 # Delete the old branch    
+git push --set-upstream origin new_branch   # Push the new branch, set local branch to track the new remote
+
+
+
+
 
 
 23. Commit message
 
+Sample template given below
 Title:
 
 Commit Summary:
@@ -157,14 +168,55 @@ vim .gitmessage
 git config --global commit.template <path-to-file>/.gitmessage
 
 
+
 24. View Old files
 git show HEAD~3:capwap/README.md
 
 
 
 
+25. Contribution to project (Advance steps to deal with branching and more. For basic see point 22)
+git clone vs github forking
+Cloning involves making a copy of the git repository to a local machine, while forking is cloning the repository into another repository on github itself. Cloning is for personal use only (although future merges may occur), but with forking you are copying and opening a new possible project path.
+
+>> fork a project on github
+WebGUI
+
+>>Clone to local machine for working locally
+git clone <repo>
+
+>> Normal Work (i.e. commit-merge-push) on local repo and push to your forked repository (called origin)
+Basic steps (Refer point 21)
+
+>> patch or cherry-pick
+
+git format-patch <target-branch> -o <where-to-store>			# patch with all commits from new feature branch
+git format-patch <target-branch> -1 <SHA> -o <where-to-store>  	# patch with single commit from new feature branch
 
 
+Similar to patch but not patch.
+git cherry-pick ec485b624e85b2cad930cf8b7c383a134748b057
+This is used when committed to wrong branch and need to only move that commit to right branch. 
+Get SHA of that commit in wrong branch using git log. Checkout to right branch and execute above command.
+
+>> pull request to original repository (called upstream)
+WebGUI
+
+
+>> review/discuss
+WebGUI
+
+>> follow-up commit
+WebGUI?
+
+>> review/discuss
+WebGUI
+
+>> merge with original master
+WebGUI
+or 
+git am <patches-directory>/<patch>  		# Similar to git add + git commit
+merge-conflict-solve-merge
 
 
 So basically 9 things to remember,
