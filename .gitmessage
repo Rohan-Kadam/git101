@@ -10,12 +10,14 @@
 
 # Add file changed section HERE
 # Example: modified: xyz file
+# Files added/modified/deleted:
 
 # Add Patch Links HERE
 # Use git diff --stat HEAD~0
 # Use git diff --unified=0 HEAD~0
 # Add raw link to patches
 # Add raw link to diff file
+# Patch link:
 
 # --- COMMIT END ---
 # Type can be 
