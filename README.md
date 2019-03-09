@@ -1,3 +1,3 @@
-Intro to git notes, git tutorial html pages
+Intro to git notes, git command list, git tutorial html pages
 
 and some other files....
