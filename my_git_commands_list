@@ -200,6 +200,9 @@ git clone <repo>
 
 >> Normal Work (i.e. commit-merge-push) on local repo and push to your forked repository (called origin)
 Basic steps (Refer point 21)
+	OR
+>> New Branch in local repo, update it to remote repo, commit , fetch upstream master, patch-format and pull-request
+Refer Contribution png
 
 >> patch or cherry-pick
 
