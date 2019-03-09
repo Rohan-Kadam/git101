@@ -92,6 +92,13 @@ git remote -v
 git remote rm origin
 git remote add origin https://github.com/Rohan-Kadam/<new-repo>
 git remote -v
+git config user.name
+git config user.name "plmqazwsx"
+mkdir patches
+vim .gitmessage
+<Enter template as written below in point 23>
+git config --global commit.template <path-to-file>/.gitmessage
+git pull origin master
 git status
 git add .
 git commit -m "First commit"
@@ -178,6 +185,12 @@ git show HEAD~3:capwap/README.md
 25. Contribution to project (Advance steps to deal with branching and more. For basic see point 22)
 git clone vs github forking
 Cloning involves making a copy of the git repository to a local machine, while forking is cloning the repository into another repository on github itself. Cloning is for personal use only (although future merges may occur), but with forking you are copying and opening a new possible project path.
+
+Tested: Using plmqazwsx account with pw:nahoor@1995
+		Note 1 = Need to subscribe to get email
+		Note 2 = Check why contribution from plmqazwsx were tagged as Rohan-Kadam (maybe since using same PC?)
+		Note 3 = Get template from cse team?
+		Note 4 = How to generate links to patches? 
 
 >> fork a project on github
 WebGUI
