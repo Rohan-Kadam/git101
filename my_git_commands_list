@@ -220,7 +220,8 @@ git push origin new-feature-branch
 
 git format-patch <target-branch> -o <where-to-store>			# patch with all commits from new feature branch
 git format-patch <target-branch> -1 <SHA> -o <where-to-store>  	# patch with single commit from new feature branch
-
+Add and commit newly created file in feature branch before generating patch for master.
+Unstaged file appears in all branches, but staged(added) and commited files visible only in respective branch.
 
 Similar to patch but not patch.
 git cherry-pick ec485b624e85b2cad930cf8b7c383a134748b057
@@ -236,16 +237,25 @@ WebGUI
 >> review/discuss
 WebGUI
 
+>> test
+git apply --check <patchname>
+
 >> follow-up commit
 WebGUI?
 
 >> review/discuss
 WebGUI
 
+>> test
+git apply --check <patchname>
+
 >> merge with original master
 WebGUI
 or 
 git am <patches-directory>/<patch>  		# Similar to git add + git commit
+or
+git apply <patch name>
+
 merge-conflict-solve-merge
 
 >> git log shows commit message of 
@@ -369,7 +379,20 @@ git push origin master
 
 B] Commands::-
 
+>> Make new repo named manifest with xml file defining path to all repos 
+mkdir code
+cd code
+sudo apt install repo
+repo init -u https://github.com/KapilGokhale/manifest.git
+rm -f .repo/
+rm -rf .repo/
+repo init -u https://github.com/KapilGokhale/manifest.git
+repo sync
+sudo apt install exuberant-ctags
+cscope -R
+sudo apt install cscope
+ctags -R
+cscope -R [Ctrl+D to Exit]
 
-
-
+>>
 
