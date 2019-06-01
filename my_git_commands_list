@@ -377,7 +377,9 @@ git push origin master
 
 
 
-B] Commands::-
+
+
+B] WORKFLOW Commands::-
 
 >> Make new repo named manifest with xml file defining path to all repos 
 mkdir code
@@ -395,4 +397,95 @@ ctags -R
 cscope -R [Ctrl+D to Exit]
 
 >>
+git checkout master(Do for develop here)
+git pull origin master(Do for develop here)
+git checkout -b my_cool_feature
+NEW FILE or MODIFY FILE
+git add FILE
+git commit
 
+Meanwhile master gets updated
+
+git checkout master (Do for develop here)
+git pull (updated master/develop with changes from my colleagues, now we are one commit behind)
+git checkout my_cool_feature
+git rebase master (Do for develop here)(re-anchor my feature branch to updated master branch, conflicts might pop here)
+++ git push origin my_cool_feature
+++ Pull Request here
+++ Reviewing a PR
+	Go to File changes tab
+	Click little + for commenting directly on a particular section of code
+	Make suggested corrections on locally and commit
+	git push origin my_cool_feature (Do checkout to master, pull, checkout to my_cool_branch, rebase)
+	PR automatically updated 
+++ Testing PR locally
+	git stash save "Description of my changes"
+	Pull down
+		1. Pull down branch
+		git checkout -b BRANCHNAME origin/BRANCHNAME
+		Ex. 
+			git checkout -b module_experiment origin/module_experiment 
+						OR
+		2. Pull down PR branch
+		git fetch origin pull/ID/head:BRANCHNAME
+		Ex.
+			git fetch origin pull/37/head:readability
+			git checkout readability
+	git stash pop (checkout to master/working branch ?)
+
+++ git checkout master(Do for develop here)
+++ git pull (updated master/develop with changes from my colleagues, now we are one commit behind)
+++ git checkout my_cool_feature
+++ git rebase master (Do for develop here)(re-anchor my feature branch to updated master branch, conflicts might pop here)
+
+git checkout master (Do for develop here)
+git rebase my_cool_feature
+git push origin master* (Do for develop here)
+
+Testing
+
+This shouldn't be needed, since master wont be updated by multiple developers?
+-- git checkout master
+-- git pull (updated master with changes from my colleagues, now we are one commit behind)
+-- git checkout develop
+-- git rebase master (re-anchor my feature branch to updated master branch, conflicts might pop here)
+
+git checkout master
+git rebase develop
+git push origin master* 
+(* Use git push --force-with-lease. It will alert you of any upstream changes you hadn't noticed and prevent the push. 
+This way you avoid overwriting anyone else's work, so it's the safer option)
+
+
+
+
+
+
+How do I Handle Rebase Conflicts?
+
+Remember how we worried our new card would conflict with someone else's changes? Turns out, one does! One developer added extra info onto the new cupcake card, such as calorie count or how many elves it takes to make it at night. The updated markups from both sets of change are in the same lines - this means the rebase can't happen automatically. Git won't know which parts of the changes to keep and which to remove. It must be resolved!
+
+Thankfully, git makes this very easy. During the rebase, git adds each commit onto the new base one by one. If it reaches a commit with a conflict, it'll pause the rebase and resume once it's fixed.
+
+If you've dealt with merge conflicts before, rebase conflicts are handled essentially the same way. Running git status will tell you where the conflicts are, and the two conflicting sections of code will be next to each other so you can decide how to fix them.
+
+Once everything is fixed, add and commit the changes like you would a normal merge conflict. Then run git rebase --continue so git can rebase the rest of your commits. It'll pause for any more conflicts, and once they're set you just need to push --force-with-lease.
+
+There's two lesser-used options you could also use. One is git rebase --abort, which would bring you back to before you started the rebase. It's useful for unexpected conflicts that you can't rush a decision for. Another is git rebase --skip, which skips over the commit causing the conflict altogether. Unless it's an unneeded commit and you're feeling lazy, you likely won't use it much. 
+
+CONFLICT
+git status
+dealing with rebase conflict is same as merge conflict
+git rebase --continue
+
+Other options:
+git rebase --continue
+git rebase --abort
+git rebase --skip
+
+More control over rebasing
+git rebase -i master
+
+Merge commits while rebasing
+git commit --fixup <commitID>
+git rebase -i --autosquash master.
